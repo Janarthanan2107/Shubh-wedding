@@ -1,0 +1,86 @@
+{
+  "id": "royal-maroon-gold",
+  "name": "Royal Maroon & Gold",
+  "tier": "free",
+  "category": "Traditional",
+  "tags": [
+    "royal",
+    "maroon",
+    "gold",
+    "palace"
+  ],
+  "description": {
+    "en": "A palace-arch invitation in deep maroon and gold foil, with mandala corners.",
+    "ta": "அரண்மனை வளைவும் மண்டல மூலைகளும் கொண்ட மெரூன்-தங்க அழைப்பிதழ்."
+  },
+  "colors": {
+    "background": "#4A1220",
+    "surface": "#64182B",
+    "text": "#F8F1E3",
+    "muted": "#E7D3A1",
+    "accent": "#D4AF37",
+    "accent2": "#8C6A2F"
+  },
+  "palettes": [
+    {
+      "id": "classic",
+      "name": "Classic maroon",
+      "colors": {
+        "background": "#4A1220",
+        "surface": "#64182B",
+        "text": "#F8F1E3",
+        "muted": "#E7D3A1",
+        "accent": "#D4AF37",
+        "accent2": "#8C6A2F"
+      }
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight gold",
+      "colors": {
+        "background": "#16131C",
+        "surface": "#262033",
+        "text": "#F6EFE2",
+        "muted": "#D9C7A2",
+        "accent": "#C6A15B",
+        "accent2": "#8D7340"
+      }
+    },
+    {
+      "id": "ivory",
+      "name": "Ivory court",
+      "colors": {
+        "background": "#F7F1E6",
+        "surface": "#FFF9F1",
+        "text": "#4A1220",
+        "muted": "#7A5A3A",
+        "accent": "#8C6A2F",
+        "accent2": "#D4AF37"
+      }
+    }
+  ],
+  "fonts": {
+    "display": "serif",
+    "body": "serif"
+  },
+  "layout": {
+    "heroStyle": "palace",
+    "frame": true,
+    "density": "regular"
+  },
+  "ornaments": {
+    "heroBg": "/templates/royal-maroon-gold/hero-bg.webp",
+    "heroBgSvg": "/templates/royal-maroon-gold/hero-bg.svg",
+    "heroBgSmall": "/templates/royal-maroon-gold/hero-bg-640.webp",
+    "borderTop": "/templates/royal-maroon-gold/border-top.svg",
+    "borderBottom": "/templates/royal-maroon-gold/border-bottom.svg",
+    "divider": "/templates/royal-maroon-gold/divider.svg",
+    "corners": {
+      "tl": "/templates/royal-maroon-gold/corner-tl.svg",
+      "tr": "/templates/royal-maroon-gold/corner-tr.svg",
+      "bl": "/templates/royal-maroon-gold/corner-bl.svg",
+      "br": "/templates/royal-maroon-gold/corner-br.svg"
+    },
+    "pattern": "/templates/royal-maroon-gold/pattern.svg"
+  }
+}

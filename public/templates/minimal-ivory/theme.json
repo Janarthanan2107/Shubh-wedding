@@ -1,0 +1,86 @@
+{
+  "id": "minimal-ivory",
+  "name": "Minimal Ivory",
+  "tier": "free",
+  "category": "Minimal",
+  "tags": [
+    "ivory",
+    "minimal",
+    "whitespace",
+    "sprig"
+  ],
+  "description": {
+    "en": "Ivory space, a thin line frame, and a single floral sprig.",
+    "ta": "ஐவரி வெளி, மெல்லிய கோட்டு சட்டம், ஒரு சிறிய மலர்க் கொத்து."
+  },
+  "colors": {
+    "background": "#FBF8F3",
+    "surface": "#FFFFFF",
+    "text": "#2C2825",
+    "muted": "#6E655C",
+    "accent": "#B08968",
+    "accent2": "#E6D8C8"
+  },
+  "palettes": [
+    {
+      "id": "classic",
+      "name": "Ivory",
+      "colors": {
+        "background": "#FBF8F3",
+        "surface": "#FFFFFF",
+        "text": "#2C2825",
+        "muted": "#6E655C",
+        "accent": "#B08968",
+        "accent2": "#E6D8C8"
+      }
+    },
+    {
+      "id": "ink",
+      "name": "Ink",
+      "colors": {
+        "background": "#F7F7F5",
+        "surface": "#FFFFFF",
+        "text": "#1A1A1A",
+        "muted": "#5C5C5C",
+        "accent": "#8A8A8A",
+        "accent2": "#D9D9D4"
+      }
+    },
+    {
+      "id": "sand",
+      "name": "Warm sand",
+      "colors": {
+        "background": "#F6EFE4",
+        "surface": "#FFFBF5",
+        "text": "#3A2E24",
+        "muted": "#7A6554",
+        "accent": "#A67C52",
+        "accent2": "#E4D2BC"
+      }
+    }
+  ],
+  "fonts": {
+    "display": "serif",
+    "body": "sans"
+  },
+  "layout": {
+    "heroStyle": "minimal",
+    "frame": true,
+    "density": "airy"
+  },
+  "ornaments": {
+    "heroBg": "/templates/minimal-ivory/hero-bg.webp",
+    "heroBgSvg": "/templates/minimal-ivory/hero-bg.svg",
+    "heroBgSmall": "/templates/minimal-ivory/hero-bg-640.webp",
+    "borderTop": "/templates/minimal-ivory/border-top.svg",
+    "borderBottom": "/templates/minimal-ivory/border-bottom.svg",
+    "divider": "/templates/minimal-ivory/divider.svg",
+    "corners": {
+      "tl": "/templates/minimal-ivory/corner-tl.svg",
+      "tr": "/templates/minimal-ivory/corner-tr.svg",
+      "bl": "/templates/minimal-ivory/corner-bl.svg",
+      "br": "/templates/minimal-ivory/corner-br.svg"
+    },
+    "pattern": "/templates/minimal-ivory/pattern.svg"
+  }
+}

@@ -1,0 +1,409 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String
+  phone        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  memberships    Membership[]
+  ownedWeddings  Wedding[]              @relation("WeddingOwner")
+  collaborations WeddingCollaborator[]
+  orders         Order[]
+  comments       Comment[]
+  tasks          Task[]
+  auditLogs      AuditLog[]
+}
+
+model Workspace {
+  id        String   @id @default(cuid())
+  name      String
+  ownerId   String
+  plan      String   @default("planner-starter")
+  createdAt DateTime @default(now())
+
+  memberships Membership[]
+  weddings    Wedding[]
+  vendors     Vendor[]
+}
+
+model Membership {
+  id          String @id @default(cuid())
+  userId      String
+  workspaceId String
+  role        String
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId])
+  @@index([workspaceId])
+}
+
+model Wedding {
+  id                   String    @id @default(cuid())
+  slug                 String    @unique
+  ownerId              String
+  workspaceId          String?
+  groomName            String
+  brideName            String
+  groomNameTa          String    @default("")
+  brideNameTa          String    @default("")
+  groomNameHi          String    @default("")
+  brideNameHi          String    @default("")
+  tagline              String    @default("")
+  story                String    @default("")
+  weddingDate          DateTime
+  city                 String
+  state                String
+  language             String    @default("en")
+  templateId           String
+  paletteId            String    @default("classic")
+  motifPack            String    @default("neutral")
+  fontPairing          String    @default("classic")
+  plan                 String    @default("free")
+  status               String    @default("draft")
+  publishedAt          DateTime?
+  gatePassword         String    @default("")
+  noindex              Boolean   @default(false)
+  designJson           String
+  publishedDesignJson  String    @default("")
+  schemaVersion        Int       @default(1)
+  designRevision       Int       @default(1)
+  watermark            Boolean   @default(true)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  owner           User                   @relation("WeddingOwner", fields: [ownerId], references: [id])
+  workspace       Workspace?             @relation(fields: [workspaceId], references: [id])
+  template        Template               @relation(fields: [templateId], references: [id])
+  events          Event[]
+  venues          Venue[]
+  guests          Guest[]
+  media           Media[]
+  versions        DesignVersion[]
+  invitation      Invitation?
+  orders          Order[]
+  collaborators   WeddingCollaborator[]
+  comments        Comment[]
+  tasks           Task[]
+  bookings        Booking[]
+  budgetItems     BudgetItem[]
+  rsvps           Rsvp[]
+
+  @@index([ownerId])
+  @@index([workspaceId])
+  @@index([status])
+}
+
+model WeddingCollaborator {
+  id        String   @id @default(cuid())
+  weddingId String
+  userId    String
+  role      String
+  createdAt DateTime @default(now())
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([weddingId, userId])
+  @@index([weddingId])
+}
+
+model Venue {
+  id        String  @id @default(cuid())
+  weddingId String
+  name      String
+  address   String
+  city      String
+  state     String
+  mapUrl    String  @default("")
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  events  Event[]
+
+  @@index([weddingId])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  weddingId   String
+  venueId     String?
+  name        String
+  type        String
+  date        DateTime
+  startTime   String
+  endTime     String   @default("")
+  dressCode   String   @default("")
+  muhurat     String   @default("")
+  tithi       String   @default("")
+  nakshatra   String   @default("")
+  description String   @default("")
+  sortOrder   Int      @default(0)
+
+  wedding     Wedding      @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  venue       Venue?       @relation(fields: [venueId], references: [id])
+  guestEvents GuestEvent[]
+
+  @@index([weddingId])
+}
+
+model Template {
+  id            String  @id
+  name          String
+  tier          String
+  active        Boolean @default(true)
+  category      String
+  tags          String
+  descriptionEn String
+  descriptionTa String
+  themeJson     String
+
+  weddings Wedding[]
+}
+
+model Invitation {
+  id                 String    @id @default(cuid())
+  weddingId          String    @unique
+  slug               String    @unique
+  status             String    @default("draft")
+  publishedVersionId String?
+  updatedAt          DateTime  @updatedAt
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+
+  @@index([slug])
+}
+
+model DesignVersion {
+  id            String   @id @default(cuid())
+  weddingId     String
+  json          String
+  status        String
+  label         String   @default("")
+  schemaVersion Int      @default(1)
+  createdBy     String   @default("")
+  createdAt     DateTime @default(now())
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+
+  @@index([weddingId])
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  weddingId String
+  kind      String
+  url       String
+  alt       String   @default("")
+  focalX    Float    @default(0.5)
+  focalY    Float    @default(0.5)
+  mask      String   @default("rounded")
+  rotation  Int      @default(0)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+
+  @@index([weddingId])
+}
+
+model Guest {
+  id        String   @id @default(cuid())
+  weddingId String
+  name      String
+  phone     String   @default("")
+  email     String   @default("")
+  side      String   @default("friends")
+  plusOnes  Int      @default(0)
+  dietary   String   @default("veg")
+  notes     String   @default("")
+  token     String   @unique
+  createdAt DateTime @default(now())
+
+  wedding Wedding      @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  events  GuestEvent[]
+  rsvp    Rsvp?
+
+  @@index([weddingId])
+  @@index([token])
+}
+
+model GuestEvent {
+  guestId String
+  eventId String
+
+  guest Guest @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@id([guestId, eventId])
+  @@index([eventId])
+}
+
+model Rsvp {
+  id        String   @id @default(cuid())
+  guestId   String   @unique
+  weddingId String
+  status    String   @default("pending")
+  headcount Int      @default(0)
+  dietary   String   @default("")
+  message   String   @default("")
+  updatedAt DateTime @updatedAt
+
+  guest   Guest   @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+
+  @@index([weddingId])
+  @@index([status])
+}
+
+model Plan {
+  id         String @id
+  name       String
+  audience   String
+  priceInr   Int
+  limitsJson String
+  blurb      String
+
+  orders Order[]
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  userId      String
+  weddingId   String?
+  workspaceId String   @default("")
+  planId      String
+  amountInr   Float
+  gstInr      Float
+  totalInr    Float
+  status      String
+  reference   String   @unique
+  simulated   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  user    User     @relation(fields: [userId], references: [id])
+  wedding Wedding? @relation(fields: [weddingId], references: [id])
+  plan    Plan     @relation(fields: [planId], references: [id])
+  payment Payment?
+
+  @@index([status])
+  @@index([weddingId])
+}
+
+model Payment {
+  id         String    @id @default(cuid())
+  orderId    String    @unique
+  status     String
+  gateway    String    @default("mock-razorpay")
+  reference  String
+  verified   Boolean   @default(false)
+  verifiedAt DateTime?
+  rawJson    String    @default("")
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  weddingId   String?
+  workspaceId String
+  title       String
+  status      String    @default("todo")
+  priority    String    @default("medium")
+  dueDate     DateTime?
+  assigneeId  String?
+  createdAt   DateTime  @default(now())
+
+  wedding  Wedding? @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  assignee User?    @relation(fields: [assigneeId], references: [id])
+
+  @@index([workspaceId])
+  @@index([weddingId])
+}
+
+model Vendor {
+  id          String @id @default(cuid())
+  workspaceId String
+  name        String
+  category    String
+  phone       String @default("")
+  city        String @default("")
+  notes       String @default("")
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  bookings  Booking[]
+
+  @@index([workspaceId])
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  weddingId String
+  vendorId  String
+  title     String
+  status    String   @default("pending")
+  amountInr Float    @default(0)
+  eventDate DateTime?
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  vendor  Vendor  @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([weddingId])
+}
+
+model BudgetItem {
+  id        String @id @default(cuid())
+  weddingId String
+  label     String
+  category  String
+  estimate  Float  @default(0)
+  paid      Float  @default(0)
+  status    String @default("pending")
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+
+  @@index([weddingId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  weddingId String
+  userId    String
+  sectionId String   @default("")
+  body      String
+  createdAt DateTime @default(now())
+
+  wedding Wedding @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@index([weddingId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String
+  entityType String
+  entityId   String
+  metaJson   String   @default("{}")
+  createdAt  DateTime @default(now())
+
+  actor User? @relation(fields: [actorId], references: [id])
+
+  @@index([entityType, entityId])
+  @@index([action])
+}

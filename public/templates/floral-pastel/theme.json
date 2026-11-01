@@ -1,0 +1,86 @@
+{
+  "id": "floral-pastel",
+  "name": "Floral Pastel",
+  "tier": "premium",
+  "category": "Floral",
+  "tags": [
+    "blush",
+    "watercolor",
+    "jasmine",
+    "rose"
+  ],
+  "description": {
+    "en": "Blush and peach florals with jasmine and rose garlands.",
+    "ta": "இளஞ்சிவப்பு மற்றும் பீச் மலர்கள், மல்லிகை மற்றும் ரோஜா மாலை."
+  },
+  "colors": {
+    "background": "#FBF1EE",
+    "surface": "#FFF8F6",
+    "text": "#6A3A45",
+    "muted": "#A56B76",
+    "accent": "#D9899A",
+    "accent2": "#E7B7A4"
+  },
+  "palettes": [
+    {
+      "id": "classic",
+      "name": "Blush",
+      "colors": {
+        "background": "#FBF1EE",
+        "surface": "#FFF8F6",
+        "text": "#6A3A45",
+        "muted": "#A56B76",
+        "accent": "#D9899A",
+        "accent2": "#E7B7A4"
+      }
+    },
+    {
+      "id": "peach",
+      "name": "Peach",
+      "colors": {
+        "background": "#FDEFE6",
+        "surface": "#FFF8F3",
+        "text": "#7A4636",
+        "muted": "#B57A68",
+        "accent": "#E2A48B",
+        "accent2": "#F3C7B0"
+      }
+    },
+    {
+      "id": "rose",
+      "name": "Rose dusk",
+      "colors": {
+        "background": "#F6E7EE",
+        "surface": "#FBF4F7",
+        "text": "#6D3A55",
+        "muted": "#A56B86",
+        "accent": "#C98BB0",
+        "accent2": "#E4B7CF"
+      }
+    }
+  ],
+  "fonts": {
+    "display": "serif",
+    "body": "serif"
+  },
+  "layout": {
+    "heroStyle": "floral",
+    "frame": true,
+    "density": "airy"
+  },
+  "ornaments": {
+    "heroBg": "/templates/floral-pastel/hero-bg.webp",
+    "heroBgSvg": "/templates/floral-pastel/hero-bg.svg",
+    "heroBgSmall": "/templates/floral-pastel/hero-bg-640.webp",
+    "borderTop": "/templates/floral-pastel/border-top.svg",
+    "borderBottom": "/templates/floral-pastel/border-bottom.svg",
+    "divider": "/templates/floral-pastel/divider.svg",
+    "corners": {
+      "tl": "/templates/floral-pastel/corner-tl.svg",
+      "tr": "/templates/floral-pastel/corner-tr.svg",
+      "bl": "/templates/floral-pastel/corner-bl.svg",
+      "br": "/templates/floral-pastel/corner-br.svg"
+    },
+    "pattern": "/templates/floral-pastel/pattern.svg"
+  }
+}

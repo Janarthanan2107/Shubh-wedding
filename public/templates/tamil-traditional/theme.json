@@ -1,0 +1,86 @@
+{
+  "id": "tamil-traditional",
+  "name": "Tamil Traditional",
+  "tier": "free",
+  "category": "Traditional",
+  "tags": [
+    "tamil",
+    "kolam",
+    "turmeric",
+    "toran"
+  ],
+  "description": {
+    "en": "Turmeric and kumkum with a kolam border, mango-leaf toran and banana leaves.",
+    "ta": "மஞ்சள் மற்றும் குங்குமம், கோலம் border, மாவிலை தோரணம், வாழை இலை."
+  },
+  "colors": {
+    "background": "#FFF4D2",
+    "surface": "#FFF9E8",
+    "text": "#7A1B16",
+    "muted": "#8A4B20",
+    "accent": "#C4312E",
+    "accent2": "#2F6B3A"
+  },
+  "palettes": [
+    {
+      "id": "classic",
+      "name": "Turmeric",
+      "colors": {
+        "background": "#FFF4D2",
+        "surface": "#FFF9E8",
+        "text": "#7A1B16",
+        "muted": "#8A4B20",
+        "accent": "#C4312E",
+        "accent2": "#2F6B3A"
+      }
+    },
+    {
+      "id": "kumkum",
+      "name": "Kumkum night",
+      "colors": {
+        "background": "#6E1220",
+        "surface": "#8A1C2C",
+        "text": "#F8E7C1",
+        "muted": "#E6C98A",
+        "accent": "#E6B325",
+        "accent2": "#F2D48A"
+      }
+    },
+    {
+      "id": "leaf",
+      "name": "Banana leaf",
+      "colors": {
+        "background": "#F3F6EA",
+        "surface": "#FFFFFF",
+        "text": "#1E3A2F",
+        "muted": "#3E5C49",
+        "accent": "#C4532A",
+        "accent2": "#2F6B3A"
+      }
+    }
+  ],
+  "fonts": {
+    "display": "serif",
+    "body": "serif"
+  },
+  "layout": {
+    "heroStyle": "kolam",
+    "frame": true,
+    "density": "regular"
+  },
+  "ornaments": {
+    "heroBg": "/templates/tamil-traditional/hero-bg.webp",
+    "heroBgSvg": "/templates/tamil-traditional/hero-bg.svg",
+    "heroBgSmall": "/templates/tamil-traditional/hero-bg-640.webp",
+    "borderTop": "/templates/tamil-traditional/border-top.svg",
+    "borderBottom": "/templates/tamil-traditional/border-bottom.svg",
+    "divider": "/templates/tamil-traditional/divider.svg",
+    "corners": {
+      "tl": "/templates/tamil-traditional/corner-tl.svg",
+      "tr": "/templates/tamil-traditional/corner-tr.svg",
+      "bl": "/templates/tamil-traditional/corner-bl.svg",
+      "br": "/templates/tamil-traditional/corner-br.svg"
+    },
+    "pattern": "/templates/tamil-traditional/pattern.svg"
+  }
+}

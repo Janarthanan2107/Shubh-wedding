@@ -1,0 +1,86 @@
+{
+  "id": "modern-sage",
+  "name": "Modern Sage",
+  "tier": "premium",
+  "category": "Modern",
+  "tags": [
+    "sage",
+    "botanical",
+    "modern",
+    "grain"
+  ],
+  "description": {
+    "en": "Sage paper, botanical line art, and a quiet modern grid.",
+    "ta": "சாம்பல் பச்சை தாள், தாவர கோட்டு ஓவியம், அமைதியான நவீன அமைப்பு."
+  },
+  "colors": {
+    "background": "#F3F5EF",
+    "surface": "#FBFCF8",
+    "text": "#243028",
+    "muted": "#5C6B60",
+    "accent": "#6E7F62",
+    "accent2": "#C5B48A"
+  },
+  "palettes": [
+    {
+      "id": "classic",
+      "name": "Sage",
+      "colors": {
+        "background": "#F3F5EF",
+        "surface": "#FBFCF8",
+        "text": "#243028",
+        "muted": "#5C6B60",
+        "accent": "#6E7F62",
+        "accent2": "#C5B48A"
+      }
+    },
+    {
+      "id": "forest",
+      "name": "Forest",
+      "colors": {
+        "background": "#1E2A24",
+        "surface": "#28362E",
+        "text": "#E7EEE4",
+        "muted": "#C5D1C6",
+        "accent": "#C4B48A",
+        "accent2": "#8FA58A"
+      }
+    },
+    {
+      "id": "mist",
+      "name": "Mist",
+      "colors": {
+        "background": "#E7EEE9",
+        "surface": "#F7FAF8",
+        "text": "#1C332B",
+        "muted": "#4E675C",
+        "accent": "#7E9474",
+        "accent2": "#D5E0D4"
+      }
+    }
+  ],
+  "fonts": {
+    "display": "serif",
+    "body": "sans"
+  },
+  "layout": {
+    "heroStyle": "botanical",
+    "frame": true,
+    "density": "airy"
+  },
+  "ornaments": {
+    "heroBg": "/templates/modern-sage/hero-bg.webp",
+    "heroBgSvg": "/templates/modern-sage/hero-bg.svg",
+    "heroBgSmall": "/templates/modern-sage/hero-bg-640.webp",
+    "borderTop": "/templates/modern-sage/border-top.svg",
+    "borderBottom": "/templates/modern-sage/border-bottom.svg",
+    "divider": "/templates/modern-sage/divider.svg",
+    "corners": {
+      "tl": "/templates/modern-sage/corner-tl.svg",
+      "tr": "/templates/modern-sage/corner-tr.svg",
+      "bl": "/templates/modern-sage/corner-bl.svg",
+      "br": "/templates/modern-sage/corner-br.svg"
+    },
+    "pattern": "/templates/modern-sage/pattern.svg"
+  }
+}

@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --page: #fbf7f2;
+  --surface: #ffffff;
+  --surface-muted: #f3ebe1;
+  --ink: #241c1c;
+  --muted: #6d625c;
+  --line: rgb(36 28 28 / 0.12);
+  --heading: #6b1d2a;
+  --link: #6b1d2a;
+}
+
+.dark {
+  --page: #1a1214;
+  --surface: #2a1c20;
+  --surface-muted: #342428;
+  --ink: #f6efe6;
+  --muted: #d2c2b8;
+  --line: rgb(246 239 230 / 0.16);
+  --heading: #f3d5d8;
+  --link: #f0c9cf;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ivory: #fbf7f2;
+  --color-ivory-deep: #f3ebe1;
+  --color-maroon: #6b1d2a;
+  --color-maroon-deep: #4a121c;
+  --color-gold: #a6843d;
+  --color-gold-soft: #e6d3a3;
+  --color-blush: #f0d5d2;
+  --color-sage: #7d8b74;
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-line: var(--line);
+  --color-heading: var(--heading);
+  --color-link: var(--link);
+  --font-sans: var(--font-outfit), "Noto Sans Tamil", "Noto Sans Devanagari", sans-serif;
+  --font-serif: var(--font-cormorant), "Noto Serif Tamil", "Noto Serif Devanagari", serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--page); color: var(--ink); font-family: var(--font-sans); }
+::selection { background: #ead3b0; color: #241c1c; }
+
+:focus-visible { outline: 2px solid var(--color-maroon); outline-offset: 2px; }
+
+.dark .bg-white:not(.invitation .bg-white) { background-color: var(--surface); }
+.dark .bg-ivory:not(.invitation .bg-ivory) { background-color: var(--page); }
+.dark .bg-ivory-deep { background-color: var(--surface-muted); }
+.dark .text-maroon:not(.invitation .text-maroon) { color: var(--link); }
+.dark .border-ink\/10,
+.dark .border-ink\/15,
+.dark .border-ink\/20 { border-color: var(--line); }
+.invitation :where(input, textarea, select) {
+  background: color-mix(in srgb, white 88%, transparent);
+  color: #241c1c;
+}
+.dark :where(input, textarea)::placeholder { color: var(--muted); }
+.invitation :where(input, textarea)::placeholder { color: #6d625c; }
+.dark { scrollbar-color: #5c454c transparent; }
+.editor-scroll { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--ink) 30%, transparent) transparent; }
+.editor-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.editor-scroll::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.anim-rise { animation: rise 0.7s ease both; }
+.anim-fade { animation: fade 0.7s ease both; }
+
+.invitation {
+  color: var(--inv-text);
+  background: var(--inv-bg);
+  font-family: var(--inv-body);
+  min-height: 100%;
+}
+.invitation.font-classic { --inv-display: var(--font-serif); --inv-body: var(--font-serif); }
+.invitation.font-modern { --inv-display: var(--font-sans); --inv-body: var(--font-sans); }
+.invitation.font-tamil { --inv-display: var(--font-tamil-serif); --inv-body: var(--font-tamil-serif); }
+.invitation.font-devanagari { --inv-display: var(--font-devanagari); --inv-body: var(--font-devanagari); }
+.invitation.lang-ta, .invitation.lang-ta .inv-copy { font-family: var(--font-tamil-serif), serif; }
+.invitation.lang-hi, .invitation.lang-hi .inv-copy { font-family: var(--font-devanagari), serif; }
+.inv-hero { position: relative; overflow: hidden; min-height: 92vh; display: grid; place-items: center; padding: 4.5rem 1.25rem 3rem; }
+.inv-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.inv-hero-shade { position: absolute; inset: 0; background: color-mix(in srgb, var(--inv-bg) 28%, transparent); }
+.inv-frame { position: relative; z-index: 1; width: min(720px, 100%); text-align: center; padding: 3.5rem 1.5rem; }
+.inv-corner { position: absolute; width: 92px; height: 92px; z-index: 2; color: var(--ornament-color); }
+.inv-corner.tl { top: 12px; left: 12px; }
+.inv-corner.tr { top: 12px; right: 12px; }
+.inv-corner.bl { bottom: 12px; left: 12px; }
+.inv-corner.br { bottom: 12px; right: 12px; }
+.inv-corner svg { width: 100%; height: 100%; }
+.ornament svg { width: 100%; height: auto; display: block; }
+.inv-border { width: min(920px, 92%); margin: 0 auto; color: var(--ornament-color); }
+.inv-names { font-family: var(--inv-display); font-weight: 500; font-size: clamp(3rem, 8vw, 6.5rem); line-height: 0.95; letter-spacing: -0.03em; }
+.inv-eyebrow { letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.72rem; color: var(--inv-muted); }
+.inv-date { font-family: var(--inv-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--inv-accent); }
+.motif-glyph { font-family: var(--font-devanagari), var(--font-gurmukhi), serif; font-size: 2.4rem; color: var(--inv-accent); display: block; margin-bottom: 0.5rem; }
+.inv-section { position: relative; padding: 3.5rem 1.25rem; }
+.inv-section-inner { width: min(760px, 100%); margin: 0 auto; }
+.inv-card { background: color-mix(in srgb, var(--inv-surface) 88%, transparent); border: 1px solid color-mix(in srgb, var(--inv-accent) 35%, transparent); border-radius: 1.25rem; }
+.mask-circle { border-radius: 999px; aspect-ratio: 1; object-fit: cover; }
+.mask-rounded { border-radius: 1.25rem; object-fit: cover; }
+.mask-arch { border-radius: 999px 999px 1rem 1rem; object-fit: cover; aspect-ratio: 3/4; }
+.inv-palace .inv-frame { border: 1px solid color-mix(in srgb, var(--inv-accent) 70%, transparent); background: color-mix(in srgb, var(--inv-bg) 55%, transparent); }
+.inv-kolam .inv-names { letter-spacing: 0; }
+.inv-floral .inv-names { font-style: italic; font-weight: 500; }
+.inv-minimal .inv-hero { min-height: 78vh; }
+.inv-minimal .inv-frame { background: transparent; padding-top: 5rem; }
+.inv-botanical .inv-frame { text-align: left; width: min(640px, 100%); }
+.inv-botanical .inv-names { font-family: var(--font-sans); letter-spacing: -0.04em; }
+.inv-temple .inv-frame { padding-top: 7rem; }
+.section-selected { outline: 2px solid var(--inv-accent); outline-offset: 4px; }
+.section-hidden-edit { opacity: 0.45; }
+.freeform-board { position: relative; width: min(420px, 100%); margin: 0 auto; aspect-ratio: 9/16; background: color-mix(in srgb, var(--inv-surface) 70%, transparent); border: 1px dashed color-mix(in srgb, var(--inv-accent) 50%, transparent); overflow: hidden; }
+
+@media (max-width: 640px) {
+  .inv-hero { min-height: 100svh; padding: 3.5rem 0.75rem 2rem; }
+  .inv-corner { width: 64px; height: 64px; }
+  .inv-names { font-size: clamp(2.6rem, 12vw, 4rem); }
+}

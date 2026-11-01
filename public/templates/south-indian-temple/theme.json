@@ -1,0 +1,86 @@
+{
+  "id": "south-indian-temple",
+  "name": "South Indian Temple Style",
+  "tier": "premium",
+  "category": "Temple",
+  "tags": [
+    "temple",
+    "gopuram",
+    "kasavu",
+    "diya"
+  ],
+  "description": {
+    "en": "A gopuram silhouette, kasavu-inspired bands, and a row of diyas on deep red.",
+    "ta": "கோபுர நிழல், கசவு போன்ற பட்டைகள், விளக்கு வரிசை, ஆழமான சிவப்பு."
+  },
+  "colors": {
+    "background": "#6B1424",
+    "surface": "#7E1B2E",
+    "text": "#F8E7C0",
+    "muted": "#E6D2A2",
+    "accent": "#E0B44A",
+    "accent2": "#F3E6C4"
+  },
+  "palettes": [
+    {
+      "id": "classic",
+      "name": "Temple red",
+      "colors": {
+        "background": "#6B1424",
+        "surface": "#7E1B2E",
+        "text": "#F8E7C0",
+        "muted": "#E6D2A2",
+        "accent": "#E0B44A",
+        "accent2": "#F3E6C4"
+      }
+    },
+    {
+      "id": "kasavu",
+      "name": "Kasavu",
+      "colors": {
+        "background": "#F7F3E8",
+        "surface": "#FFFDF8",
+        "text": "#5C1220",
+        "muted": "#7A4A3A",
+        "accent": "#C6A15A",
+        "accent2": "#6B1424"
+      }
+    },
+    {
+      "id": "lamp",
+      "name": "Night lamp",
+      "colors": {
+        "background": "#1A120E",
+        "surface": "#2A1D16",
+        "text": "#F6E6C8",
+        "muted": "#D9C4A0",
+        "accent": "#E7A23A",
+        "accent2": "#F0D7A2"
+      }
+    }
+  ],
+  "fonts": {
+    "display": "serif",
+    "body": "serif"
+  },
+  "layout": {
+    "heroStyle": "temple",
+    "frame": true,
+    "density": "regular"
+  },
+  "ornaments": {
+    "heroBg": "/templates/south-indian-temple/hero-bg.webp",
+    "heroBgSvg": "/templates/south-indian-temple/hero-bg.svg",
+    "heroBgSmall": "/templates/south-indian-temple/hero-bg-640.webp",
+    "borderTop": "/templates/south-indian-temple/border-top.svg",
+    "borderBottom": "/templates/south-indian-temple/border-bottom.svg",
+    "divider": "/templates/south-indian-temple/divider.svg",
+    "corners": {
+      "tl": "/templates/south-indian-temple/corner-tl.svg",
+      "tr": "/templates/south-indian-temple/corner-tr.svg",
+      "bl": "/templates/south-indian-temple/corner-bl.svg",
+      "br": "/templates/south-indian-temple/corner-br.svg"
+    },
+    "pattern": "/templates/south-indian-temple/pattern.svg"
+  }
+}
